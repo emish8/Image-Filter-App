@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package: http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -51,6 +55,25 @@ class _MyHomePageState extends State<MyHomePage> {
   File? selectedImage;
   String? message= "";
 
+  dynamic uploadImage()
+
+  uploadImage() async {
+    final request = http.MultipartRequest(
+      "POST", Uri.parse(" https://95a9-2401-4900-1f3e-301c-2136-2fec-7ebb-dcd.in.ngrok.io/upload")
+    final  headers = {'Content-type': multipart/form-data};
+
+      request.files.add(http.Multipartfile('image',
+        selectedImage!.readAsByte().asStream(), selectedImage!.lengthSync() ,
+        filename: selectedImage!.path.split("/").last));
+      request.headers.addAll(headers);
+      final response = await request.send();
+      http.Response res = await http.Response.fromStream(response);
+      final resJson = jsonDecode(res.body);
+      message = resJson['message'];
+      setState(() {});
+      );
+
+  }
   Future getImage() async {
     final pickedImage =
         await ImagePicker().getImage( source: ImageSource.gallery);
@@ -93,11 +116,11 @@ class _MyHomePageState extends State<MyHomePage> {
               style: ButtonStyle(
                 backgroundColor : MaterialStateProperty.all(Colors.blue),
               ),
-              onPressed:(){},
+              onPressed: uploadImage,
               icon: Icon(Icons.upload_file, color: Colors.white),
               label: Text('Upload',
                   style: TextStyle(
-                    colors: Colors.white,
+                    color: Colors.white,
                   )
               )
             )
@@ -111,3 +134,254 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
